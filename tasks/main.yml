@@ -86,7 +86,7 @@
     state: present
     variables:
       vmware_host: '{{ lookup("env", "VMWARE_HOST") }}'
-      vmware_username: '{{ lookup("env", "VMWARE_USER") }}'
+      vmware_user: '{{ lookup("env", "VMWARE_USER") }}'
       vmware_password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
   tags:
     - terraform_spoke_network
