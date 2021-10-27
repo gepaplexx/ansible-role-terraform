@@ -83,7 +83,7 @@
 - name: Run terraform plan
   community.general.terraform:
     project_path: /home/ansible/terraform/spoke-network
-    state: present
+    state: "{{ terraform_state }}"
     variables:
       vmware_host: '{{ lookup("env", "VMWARE_HOST") }}'
       vmware_user: '{{ lookup("env", "VMWARE_USER") }}'

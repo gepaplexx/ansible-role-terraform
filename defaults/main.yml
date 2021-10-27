@@ -2,4 +2,7 @@
 # Cache update time for apt module.
 terraform_spoke_network_cache_valid_time: 3600
 
+# Create or destroy terraform resource by setting
+# terraform_state.
+terraform_state: present
 ...
