@@ -1,8 +1,15 @@
 ---
-# Cache update time for apt module.
+## Cache update time for apt module.
 terraform_spoke_network_cache_valid_time: 3600
 
-# Create or destroy terraform resource by setting
-# terraform_state.
+## Create or destroy terraform resource by setting
+## terraform_state.
 terraform_state: present
+
+## provide additional variables to terraform which
+## can be used by the terraform plan.
+# terraform_variables:
+#   vmware_host: '{{ lookup("env", "VMWARE_HOST") }}'
+#   vmware_user: '{{ lookup("env", "VMWARE_USER") }}'
+#   vmware_password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
 ...
