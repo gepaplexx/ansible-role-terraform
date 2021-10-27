@@ -1,0 +1,6 @@
+---
+- name: Converge
+  hosts: instance*
+  roles:
+    - role: gepaplexx.terraform_spoke_network
+...

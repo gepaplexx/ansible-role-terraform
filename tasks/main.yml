@@ -1,0 +1,62 @@
+---
+- name: Install dependencies
+  ansible.builtin.apt:
+    name:
+      - gnupg
+      - software-properties-common
+      - curl
+    state: present
+    update_cache: true
+    cache_valid_time: "{{ terraform_spoke_network_cache_valid_time }}"
+  tags:
+    - terraform_spoke_network
+    - terraform_spoke_network.dependencies
+
+- name: Add terraform key to apt
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+  notify: Update apt
+  tags:
+    - terraform_spoke_network
+    - terraform_spoke_network.dependencies
+
+- name: Add helm repo to apt
+  ansible.builtin.apt_repository:
+    repo: >-
+      deb [arch=amd64] https://apt.releases.hashicorp.com
+      {{
+        ansible_facts["ansible_lsb"].codename |
+        default(ansible_distribution_release)
+      }}
+      main
+    state: present
+  notify: Update apt
+  tags:
+    - terraform_spoke_network
+    - terraform_spoke_network.dependencies
+
+- name: Force all notified handlers to run
+  ansible.builtin.meta: flush_handlers
+  tags:
+    - always
+
+- name: Install terraform
+  ansible.builtin.apt:
+    name:
+      - terraform
+    state: present
+  tags:
+    - terraform_spoke_network
+    - terraform_spoke_network.dependencies
+
+- name: Run terraform plan
+  community.general.terraform:
+    project_path: '{{ role_path }}/terraform'
+    state: present
+  tags:
+    - terraform_spoke_network
+    - terraform_spoke_network.apply
+    - molecule-notest
+
+...
