@@ -6,26 +6,13 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/gepaplexx/ansible-role-terraform-spoke-network?style=flat-square)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=flat-square)
 
-Installing terraform_spoke_network in Kubernetes.
+Create a new spoke network for gepaplexx.
 
 ## Role Variables
 
 Variable Name | Default Value | Description
 ------------ | ------------- | -------------
 terraform_spoke_network_cache_valid_time | 3600 | Cache update time for apt module.
-terraform_spoke_network_namespace | default | Specify the kubernetes namespace to install resources to.
-
-## Role Usage Examples
-
-Example for installing terraform_spoke_network in a dedicated namespace `terraform_spoke_network`.
-
-```yaml
-- hosts: all
-  roles:
-  - role: gepaplexx.terraform_spoke_network
-    vars:
-      terraform_spoke_network_namespace: terraform_spoke_network
-```
 
 ## License
 
