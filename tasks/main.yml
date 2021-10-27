@@ -21,7 +21,7 @@
     - terraform_spoke_network
     - terraform_spoke_network.dependencies
 
-- name: Add helm repo to apt
+- name: Add terraform repo to apt
   ansible.builtin.apt_repository:
     repo: >-
       deb [arch=amd64] https://apt.releases.hashicorp.com
