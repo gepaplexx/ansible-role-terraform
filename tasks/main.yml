@@ -52,7 +52,7 @@
 
 - name: Create terraform folder structure
   ansible.builtin.file:
-    path: /home/ansible/terraform/spoke-network
+    path: /home/ansible/terraform
     state: directory
     owner: ansible
     group: ansible
@@ -61,13 +61,11 @@
     - terraform_spoke_network
     - terraform_spoke_network.apply
 
-- name: Copy terraform plan
-  ansible.builtin.copy:
-    src: "{{ role_path }}/terraform/"
+- name: Git checkout terraform plan
+  ansible.builtin.git:
+    repo: 'https://github.com/gepaplexx/terraform-spoke-network.git'
     dest: /home/ansible/terraform/spoke-network
-    owner: ansible
-    group: ansible
-    mode: u=rw,g=r,o=r
+    version: main
   tags:
     - terraform_spoke_network
     - terraform_spoke_network.apply
@@ -80,4 +78,5 @@
     - terraform_spoke_network
     - terraform_spoke_network.apply
     - molecule-notest
+
 ...
