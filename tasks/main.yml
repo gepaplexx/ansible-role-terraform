@@ -68,7 +68,7 @@
   ansible.builtin.git:
     repo: "{{ terraform_repo_url }}"
     dest: "{{ terraform_repo_dir }}"
-    version: main
+    version: "{{ terraform_repo_branch }}"
   tags:
     - terraform
     - terraform.apply

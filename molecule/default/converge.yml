@@ -5,6 +5,7 @@
     - role: gepaplexx.terraform
       vars:
         terraform_repo_url: >-
-          "https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git"
+          https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git
         terraform_repo_dir: "/home/ansible/terraform/bootstrap-spoke-network"
+        terraform_repo_branch: main
 ...

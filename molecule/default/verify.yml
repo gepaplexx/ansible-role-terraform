@@ -75,7 +75,7 @@
     - name: Check if git repo is cloned
       ansible.builtin.git:
         repo: >-
-          'https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git'
+          https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git
         dest: /home/ansible/terraform/bootstrap-spoke-network
         version: main
       check_mode: true

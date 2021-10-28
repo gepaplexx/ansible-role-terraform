@@ -9,6 +9,9 @@ terraform_cache_valid_time: 3600
 # terraform_repo_url: >-
 #   https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git
 
+## Specify the repo branch.
+# terraform_repo_branch: main
+
 ## provide additional variables to terraform which
 ## can be used by the terraform plan.
 # terraform_variables:
