@@ -1,9 +1,100 @@
 ---
 - name: Verify
   hosts: instance*
+  become: true
   tasks:
-    - name: dummy
-      assert:
-        that:
-          - true
+    - name: Check dependencies
+      ansible.builtin.apt:
+        name:
+          - gnupg
+          - software-properties-common
+          - curl
+        state: present
+        update_cache: true
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.dependencies
+
+    - name: Check terraform key to apt
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.dependencies
+
+    - name: Check terraform repo to apt
+      ansible.builtin.apt_repository:
+        repo: >-
+          deb [arch=amd64] https://apt.releases.hashicorp.com
+          {{
+            ansible_facts["ansible_lsb"].codename |
+            default(ansible_distribution_release)
+          }}
+          main
+        state: present
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.dependencies
+
+    - name: Check if terraform is installed
+      ansible.builtin.apt:
+        name:
+          - terraform
+        state: present
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.dependencies
+
+    - name: Check terraform folder structure
+      ansible.builtin.file:
+        path: /home/ansible/terraform
+        state: directory
+        owner: ansible
+        group: ansible
+        mode: u=rwx,g=rx,o=rx
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.apply
+
+    - name: Check if git repo is cloned
+      ansible.builtin.git:
+        repo: >-
+          'https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git'
+        dest: /home/ansible/terraform/bootstrap-spoke-network
+        version: main
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.apply
+
+    - name: Check owner and group in terraform folder structure
+      ansible.builtin.file:
+        path: /home/ansible/terraform
+        owner: root
+        group: root
+        recurse: true
+      check_mode: true
+      register: terraform_verify
+      failed_when: terraform_verify.changed
+      tags:
+        - terraform
+        - terraform.apply
 ...

@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  role_name: terraform_spoke_network
+  role_name: terraform
   author: ckaserer
   namespace: gepaplexx
   description: Ansible Role Description

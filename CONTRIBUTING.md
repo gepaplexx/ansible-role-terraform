@@ -4,8 +4,8 @@
 
 Before you begin:
 - Have you read the [code of conduct](CODE_OF_CONDUCT.md)?
-- Check out the [existing issues](https://github.com/gepaplexx/ansible-role-terraform-spoke-network/issues) & see if we [accept contributions](#types-of-contributions-memo) for your type of issue.
-- Before you make your changes, check to see if an [issue exists](https://github.com/gepaplexx/ansible-role-terraform-spoke-network/issues/) already for the change you want to make.
+- Check out the [existing issues](https://github.com/gepaplexx/ansible-role-terraform/issues) & see if we [accept contributions](#types-of-contributions-memo) for your type of issue.
+- Before you make your changes, check to see if an [issue exists](https://github.com/gepaplexx/ansible-role-terraform/issues/) already for the change you want to make.
 
 ### Don't see your issue? Open one
 
@@ -41,7 +41,7 @@ When you're done making changes and you'd like to propose them for review open a
 ### Your PR is merged!
 Congratulations! The gepaplexx community thanks you. :sparkles:
 
-Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/gepaplexx/ansible-role-terraform-spoke-network/graphs/contributors).
+Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/gepaplexx/ansible-role-terraform/graphs/contributors).
 
 ### Keep contributing as you use the ansible role
 
@@ -60,12 +60,12 @@ Now that you're a part of the gepaplexx community, you can keep participating in
   - [Suggested changes](#suggested-changes)
 
 ## Types of contributions :memo:
-You can contribute in several ways. This repo is a place to discuss and collaborate on the ansible role gepaplexx.terraform_spoke_network! Our small, but mighty :muscle: gepaplexx team is maintaining this repo. To preserve our bandwidth, off topic conversations will be closed.
+You can contribute in several ways. This repo is a place to discuss and collaborate on the ansible role gepaplexx.terraform! Our small, but mighty :muscle: gepaplexx team is maintaining this repo. To preserve our bandwidth, off topic conversations will be closed.
 
 ### :mega: Discussions
 Discussions are where we have conversations.
 
-If you'd like help troubleshooting a PR you're working on, have a great new idea, or want to share something amazing you've learned in our docs, join us in [discussions](https://github.com/gepaplexx/ansible-role-terraform-spoke-network/discussions).
+If you'd like help troubleshooting a PR you're working on, have a great new idea, or want to share something amazing you've learned in our docs, join us in [discussions](https://github.com/gepaplexx/ansible-role-terraform/discussions).
 
 ### :beetle: Issues
 [Issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues) are used to track tasks that contributors can help with. If an issue has a triage label, we haven't reviewed it yet and you shouldn't begin work on it.

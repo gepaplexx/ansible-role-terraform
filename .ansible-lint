@@ -24,12 +24,12 @@ quiet: true
 #   - fake_namespace.fake_collection.fake_role  # role within a collection
 
 # Enable checking of loop variable prefixes in roles
-loop_var_prefix: "terraform_spoke_network_"
+loop_var_prefix: "terraform_"
 
 # Enforce variable names to follow pattern below, in addition to Ansible own
 # requirements, like avoiding python identifiers. To disable add `var-naming`
 # to skip_list.
-var_naming_pattern: "^[_]*terraform_spoke_network_[a-z][a-z0-9_]*$"
+var_naming_pattern: "^[_]*terraform_[a-z][a-z0-9_]*$"
 
 use_default_rules: true
 

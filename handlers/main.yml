@@ -2,6 +2,7 @@
 - name: Update apt
   ansible.builtin.apt:
     update_cache: true
+  become: true
   tags:
     - always
 ...

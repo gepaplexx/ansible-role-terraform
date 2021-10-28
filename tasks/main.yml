@@ -2,24 +2,27 @@
 - name: Install dependencies
   ansible.builtin.apt:
     name:
+      - git
       - gnupg
       - software-properties-common
       - curl
     state: present
     update_cache: true
-    cache_valid_time: "{{ terraform_spoke_network_cache_valid_time }}"
+    cache_valid_time: "{{ terraform_cache_valid_time }}"
+  become: true
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.dependencies
+    - terraform
+    - terraform.dependencies
 
 - name: Add terraform key to apt
   ansible.builtin.apt_key:
     url: https://apt.releases.hashicorp.com/gpg
     state: present
+  become: true
   notify: Update apt
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.dependencies
+    - terraform
+    - terraform.dependencies
 
 - name: Add terraform repo to apt
   ansible.builtin.apt_repository:
@@ -31,10 +34,11 @@
       }}
       main
     state: present
+  become: true
   notify: Update apt
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.dependencies
+    - terraform
+    - terraform.dependencies
 
 - name: Force all notified handlers to run
   ansible.builtin.meta: flush_handlers
@@ -46,49 +50,37 @@
     name:
       - terraform
     state: present
+  become: true
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.dependencies
+    - terraform
+    - terraform.dependencies
 
 - name: Create terraform folder structure
   ansible.builtin.file:
     path: /home/ansible/terraform
     state: directory
-    owner: ansible
-    group: ansible
     mode: u=rwx,g=rx,o=rx
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.apply
+    - terraform
+    - terraform.apply
 
 - name: Git checkout terraform plan
   ansible.builtin.git:
-    repo: 'https://github.com/gepaplexx/terraform-spoke-network.git'
-    dest: /home/ansible/terraform/spoke-network
+    repo: "{{ terraform_repo_url }}"
+    dest: "{{ terraform_repo_dir }}"
     version: main
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.apply
+    - terraform
+    - terraform.apply
 
-- name: Update owner and group in terraform folder structure
-  ansible.builtin.file:
-    path: /home/ansible/terraform
-    owner: ansible
-    group: ansible
-    recurse: true
-  tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.apply
-
-- name: Run terraform plan
+- name: Execute terraform plan
   community.general.terraform:
     project_path: /home/ansible/terraform/spoke-network
     state: "{{ terraform_state }}"
     variables: "{{ terraform_variables | default( {} ) }}"
     force_init: true
   tags:
-    - terraform_spoke_network
-    - terraform_spoke_network.apply
+    - terraform
+    - terraform.apply
     - molecule-notest
-
 ...

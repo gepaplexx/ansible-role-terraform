@@ -2,5 +2,9 @@
 - name: Converge
   hosts: instance*
   roles:
-    - role: gepaplexx.terraform_spoke_network
+    - role: gepaplexx.terraform
+      vars:
+        terraform_repo_url: >-
+          "https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git"
+        terraform_repo_dir: "/home/ansible/terraform/bootstrap-spoke-network"
 ...

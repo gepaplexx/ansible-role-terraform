@@ -1,10 +1,13 @@
 ---
 ## Cache update time for apt module.
-terraform_spoke_network_cache_valid_time: 3600
+terraform_cache_valid_time: 3600
 
-## Create or destroy terraform resource by setting
-## terraform_state.
-terraform_state: present
+## Specify the target directory to clone the terraform repo to.
+# terraform_repo_dir: /home/ansible/terraform/bootstrap-spoke-network
+
+## Specify the repo url containing the terraform plan.
+# terraform_repo_url: >-
+#   https://github.com/gepaplexx/terraform-bootstrap-spoke-network.git
 
 ## provide additional variables to terraform which
 ## can be used by the terraform plan.
@@ -12,4 +15,8 @@ terraform_state: present
 #   vmware_host: '{{ lookup("env", "VMWARE_HOST") }}'
 #   vmware_user: '{{ lookup("env", "VMWARE_USER") }}'
 #   vmware_password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+
+## Create or destroy terraform resource by setting
+## terraform_state.
+terraform_state: present
 ...
