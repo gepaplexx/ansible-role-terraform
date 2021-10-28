@@ -75,7 +75,7 @@
 
 - name: Execute terraform plan
   community.general.terraform:
-    project_path: /home/ansible/terraform/spoke-network
+    project_path: "{{ terraform_repo_dir }}"
     state: "{{ terraform_state }}"
     variables: "{{ terraform_variables | default( {} ) }}"
     force_init: true
