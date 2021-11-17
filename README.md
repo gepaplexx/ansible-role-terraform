@@ -8,8 +8,6 @@
 
 Create infrastructure with terraform. The role can deploy any terraform plan provided by `terraform_repo_url` and customize the variables used by terraform via `terraform_variables`.
 
-## Role Variables
-
 Variable Name | Default Value | Description
 ------------ | ------------- | -------------
 terraform_cache_valid_time | 3600 | Cache update time for apt module.
