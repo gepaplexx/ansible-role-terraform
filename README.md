@@ -6,7 +6,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/gepaplexx/ansible-role-terraform?style=flat-square)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=flat-square)
 
-Bootstrap a new spoke network for gepaplexx. Terraform creates a network, a folder and a single ubuntu vm. In a later step the vm will be configured as dhcp server. Once the dhcp server is up and running we create the remaining resources with a seperate terraform plan since all other resources depend on the dhcp server.
+Create infrastructure with terraform. The role can deploy any terraform plan provided by `terraform_repo_url` and customize the variables used by terraform via `terraform_variables`.
 
 ## Role Variables
 
@@ -23,10 +23,6 @@ terraform_variables | | provide additional variables to terraform which can be u
 
 MIT
 
-## Author Information
-
-This role was created in 2021 by [Clemens Kaserer](https://www.ckaserer.dev/).
-
-Contributions by:
+## Contributions
 
 - [@ckaserer](https://github.com/ckaserer)
