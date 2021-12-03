@@ -12,8 +12,8 @@ Variable Name | Default Value | Description
 ------------ | ------------- | -------------
 terraform_cache_valid_time | 3600 | Cache update time for apt module.
 terraform_repo_branch | | Specify the repo branch containing the terraform plan.
-terraform_repo_dir | | Specify the repo url containing the terraform plan.
-terraform_repo_url | | Specify the target directory to clone the terraform repo to.
+terraform_repo_dir | | Specify the target directory to clone the terraform repo to.
+terraform_repo_url | | Specify the repo url containing the terraform plan.
 terraform_state | present | Create or destroy terraform resource by setting the terraform_state.
 terraform_variables | | provide additional variables to terraform which can be used by the terraform plan.
 
